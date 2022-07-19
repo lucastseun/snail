@@ -21,6 +21,17 @@ export default defineConfig(({command, mode}) => {
       'import.meta.env.VITE_MOCK': env.VITE_MOCK === 'true', // 自定义的环境变量加载出来是string类型
       'import.meta.env.VITE_APP_VER': getVer()
     },
+    server: {
+      host: 'localhost',
+      port: '5173',
+      proxy: {
+        '/user': {
+          target: 'http://localhost:3000',
+          changeOrigin: true,
+          // rewrite: (path) => path.replace(/^\/user/, '') // 为啥不能重写路径
+        },
+      }
+    },
     plugins: [vue()]
   }
 })
