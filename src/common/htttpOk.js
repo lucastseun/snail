@@ -38,7 +38,7 @@ const httpOk = async (opts = {}) => {
     if (!(init.method==='GET' || init.method==='HEAD')) {
         init.body = opts.data;
     }
-    return await fetch(url, init).then(res => res.ok && res.json());
+    return await fetch(url, init).then(res => res.ok ? res.json() : res);
 };
 
 export default httpOk;
