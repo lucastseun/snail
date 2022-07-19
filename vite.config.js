@@ -18,6 +18,9 @@ export default defineConfig(({command, mode}) => {
   const env = loadEnv(mode, process.cwd())
   env.VITE_APP_VER = getVer()
   return {
+    define: {
+      'import.meta.env.VITE_MOCK': env.VITE_MOCK === 'true' // 自定义的环境变量加载出来是string类型
+    },
     plugins: [vue()]
   }
 })

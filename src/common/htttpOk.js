@@ -3,7 +3,7 @@ import { merge, stringify } from './utils';
 
 const httpOk = async (opts = {}) => {
     let url = Api[opts.url] || '';
-    if (import.meta.env.VITE_MOCK === 'mock') {
+    if (import.meta.env.VITE_MOCK) {
         const urlArr = url.split('/');
         const urlName = urlArr[urlArr.length - 1];
         url = `/src/mock/${urlName}.json`;
