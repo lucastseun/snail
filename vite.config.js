@@ -16,10 +16,10 @@ export default defineConfig(({command, mode}) => {
   // 根据当前工作目录中的 `mode` 加载 .env 文件
   // 设置第三个参数为 '' 来加载所有环境变量，而不管是否有 `VITE_` 前缀。
   const env = loadEnv(mode, process.cwd())
-  env.VITE_APP_VER = getVer()
   return {
     define: {
-      'import.meta.env.VITE_MOCK': env.VITE_MOCK === 'true' // 自定义的环境变量加载出来是string类型
+      'import.meta.env.VITE_MOCK': env.VITE_MOCK === 'true', // 自定义的环境变量加载出来是string类型
+      'import.meta.env.VITE_APP_VER': getVer()
     },
     plugins: [vue()]
   }
