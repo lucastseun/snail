@@ -1,5 +1,6 @@
-const urlParams = new URLSearchParams(location.search);
-let { env } = Object.fromEntries(urlParams.entries());
+import { getParams } from './utils';
+
+let env = getParams('env');
 let urlfix = '';
 
 // 开发环境，将env值置为development

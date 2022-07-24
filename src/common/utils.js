@@ -17,6 +17,12 @@ const stringify = (body = {}) => {
     return sr
 }
 
+const getParams = (key) => {
+    const urlParams = new URLSearchParams(location.search);
+    const urlMap = Object.fromEntries(urlParams.entries());
+    return urlMap[key];
+}
+
 const toUpperCase = (str = '') => Object.prototype.toUpperCase.call(str)
 
 const toLowerCase = (str = '') => String.prototype.toLowerCase.call(str)
@@ -24,6 +30,7 @@ const toLowerCase = (str = '') => String.prototype.toLowerCase.call(str)
 export {
     merge,
     stringify,
+    getParams,
     toUpperCase,
     toLowerCase
 }
